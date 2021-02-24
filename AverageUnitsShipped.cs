@@ -1,5 +1,5 @@
 ﻿// Student Name: Jacob Kent
-// Date: Jan 21, 2021
+// Date: Feb 24, 2021
 // Program Name: Average Units Shipped
 // Description: Take inputs of 7 numbers, valdiate them, and output their average in a functional form with accessbility features.
 
