@@ -20,7 +20,6 @@ namespace Lab_1
 
         // Declarations
         int currentDay = 1;
-        int runningTotal = 0;
         int currentEmployee = 0;
 
         // Arrays
@@ -50,18 +49,14 @@ namespace Lab_1
             textboxUnitsShipped.Clear();
             ClearControls(pastEntriesArray);
             ClearControls(averageLabelArray);
-                    // textBoxPastEntries1.Clear();
-                    // textBoxPastEntries2.Clear();
-                    // textBoxPastEntries3.Clear();
-                    // labelEmployeeAverage1.Text = String.Empty;
-                    // labelEmployeeAverage2.Text = String.Empty;
-                    // labelEmployeeAverage3.Text = String.Empty;
             labelAverageOutput.Text = String.Empty;
 
             // Reset the global variables
             currentDay = 1;
-            runningTotal = 0;
             int currentEmployee = 0;
+
+            // Rest Day Label
+            labelDay.Text = "Day " + currentDay;
 
             // Clear all contents of the unitsShippedArray
             Array.Clear(unitsShippedArray, 0, unitsShippedArray.Length);
@@ -128,11 +123,8 @@ namespace Lab_1
                 {
                     // Add the newest entry to the list of past entries for the current employee
                     pastEntriesArray[currentEmployee].Text += lastEntry + "\r\n";
-                            // textBoxPastEntries1.Text += lastEntry + "\r\n";
                     // Add the last entry to the unitsShippedArray for the current employee and day
                     unitsShippedArray[currentEmployee, currentDay - 1] = lastEntry;
-                            // Add to the current total by the entry
-                            //runningTotal += lastEntry;
                     // Increment the day by 1
                     currentDay++;
                     // Clear the entry textbox after each valid entry
@@ -148,18 +140,23 @@ namespace Lab_1
 
                         // Reset the current day
                         currentDay = 1;
+                        labelDay.Text = "Day " + currentDay;
                         // Increment to the next employee
                         currentEmployee++;
 
-
-                        // Determine the average
-                        // double averageUnits;
-                        // averageUnits = (double)runningTotal / (double)MaximumDays;
+                        // If the current employee is now equal to total employees. Disable controls, and calculate the final average
+                        if (currentEmployee == TotalEmployees)
+                        {
+                            // Determine the average
+                            double averageUnits = 0;
+                            // averageUnits = (double)runningTotal / (double)MaximumDays;
                             // Output the result
-                        // labelAverageOutput.Text = "Average per day: " + Math.Round(averageUnits, 2);
+                            labelAverageOutput.Text = "Average per day: " + Math.Round(averageUnits, 2);
+
                             // Disable controls
-                        // textboxUnitsShipped.Enabled = false;
-                        // buttonEnter.Enabled = false;
+                            textboxUnitsShipped.Enabled = false;
+                            buttonEnter.Enabled = false;
+                        }
 
                     }
                     // If the day is <= 7
