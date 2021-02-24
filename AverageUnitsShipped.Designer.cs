@@ -85,6 +85,7 @@ namespace Lab_1
             this.textBoxPastEntries1.ReadOnly = true;
             this.textBoxPastEntries1.Size = new System.Drawing.Size(115, 116);
             this.textBoxPastEntries1.TabIndex = 2;
+            this.textBoxPastEntries1.TabStop = false;
             this.toolTip1.SetToolTip(this.textBoxPastEntries1, "Past entries for Employee 1 this week.");
             // 
             // labelAverageOutput
@@ -139,6 +140,7 @@ namespace Lab_1
             this.textBoxPastEntries2.ReadOnly = true;
             this.textBoxPastEntries2.Size = new System.Drawing.Size(115, 116);
             this.textBoxPastEntries2.TabIndex = 3;
+            this.textBoxPastEntries2.TabStop = false;
             this.toolTip1.SetToolTip(this.textBoxPastEntries2, "Past entries for Employee 2 this week.");
             // 
             // textBoxPastEntries3
@@ -150,6 +152,7 @@ namespace Lab_1
             this.textBoxPastEntries3.ReadOnly = true;
             this.textBoxPastEntries3.Size = new System.Drawing.Size(115, 116);
             this.textBoxPastEntries3.TabIndex = 4;
+            this.textBoxPastEntries3.TabStop = false;
             this.toolTip1.SetToolTip(this.textBoxPastEntries3, "Past entries for Employee 3 this week.");
             // 
             // labelEmployeeAverage1

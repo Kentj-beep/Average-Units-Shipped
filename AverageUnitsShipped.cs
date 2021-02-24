@@ -24,7 +24,8 @@ namespace Lab_1
 
         // Arrays
         int[,] unitsShippedArray = new int[3, 7];
-
+        double[] employeeAveragesArray = new double[3];
+           
         TextBox[] pastEntriesArray;
         Label[] averageLabelArray;
 
@@ -53,7 +54,7 @@ namespace Lab_1
 
             // Reset the global variables
             currentDay = 1;
-            int currentEmployee = 0;
+            currentEmployee = 0;
 
             // Rest Day Label
             labelDay.Text = "Day " + currentDay;
@@ -136,7 +137,20 @@ namespace Lab_1
 
                         // For loop here to determine current employee average
 
+                        int unitsShipped = 0;
+                        double averageUnits = 0;
 
+                        // Count through the array for the current employee to determine their average
+                        for(int counter = 0; counter < MaximumDays; counter++)
+                        {
+                            // Add the value for that employee, on that day, to their units shipped.
+                            unitsShipped += unitsShippedArray[currentEmployee, counter];
+                        }
+
+                        // Determine and set the average for the current employee
+                        averageUnits = (double)unitsShipped / (double)MaximumDays;
+                        employeeAveragesArray[currentEmployee] = Math.Round(averageUnits, 2);
+                        averageLabelArray[currentEmployee].Text = "Average: " + averageUnits.ToString("F2");
 
                         // Reset the current day
                         currentDay = 1;
@@ -148,10 +162,23 @@ namespace Lab_1
                         if (currentEmployee == TotalEmployees)
                         {
                             // Determine the average
-                            double averageUnits = 0;
-                            // averageUnits = (double)runningTotal / (double)MaximumDays;
-                            // Output the result
-                            labelAverageOutput.Text = "Average per day: " + Math.Round(averageUnits, 2);
+                            averageUnits = 0;
+                            double averageShipped = 0;
+                            // Count through the array for the current employee to determine their average
+                            for (int counter = 0; counter < employeeAveragesArray.Length; counter++)
+                            {
+                                // Add the average for that employee to the total of the averages
+                                averageShipped += employeeAveragesArray[counter];
+                            }
+
+                            // Determine and set the average for all employees
+                            averageUnits = averageShipped / (double)TotalEmployees;
+                            Math.Round(averageUnits, 2);
+                            labelAverageOutput.Text = "Average per day: " + averageUnits.ToString("F2");
+
+                            // Testing section
+                            // MessageBox.Show("Average 1: " + employeeAveragesArray[0] + "Average 2: " 
+                            // + employeeAveragesArray[1] + "Average 3: " + employeeAveragesArray[2]);
 
                             // Disable controls
                             textboxUnitsShipped.Enabled = false;
